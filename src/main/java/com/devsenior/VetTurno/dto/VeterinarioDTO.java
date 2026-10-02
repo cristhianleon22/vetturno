@@ -3,5 +3,7 @@ package com.devsenior.VetTurno.dto;
 public record VeterinarioDTO(
     Long id,
     String nombre,
-    String especialidad
+    String apellido,
+    String especialidad,
+    String telefono
 ) {}

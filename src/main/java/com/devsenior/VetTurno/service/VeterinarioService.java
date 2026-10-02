@@ -21,16 +21,18 @@ public class VeterinarioService {
     public VeterinarioDTO createVeterinario(VeterinarioRequest request) {
         Veterinario veterinario = new Veterinario();
         veterinario.setNombre(request.nombre());
+        veterinario.setApellido(request.apellido());
         veterinario.setEspecialidad(request.especialidad());
+        veterinario.setTelefono(request.telefono());
         
         Veterinario saved = veterinarioRepository.save(veterinario);
         
-        return new VeterinarioDTO(saved.getId(), saved.getNombre(), saved.getEspecialidad());
+        return new VeterinarioDTO(saved.getId(), saved.getNombre(), saved.getApellido(), saved.getEspecialidad(), saved.getTelefono());
     }
 
     public List<VeterinarioDTO> getAllVeterinarios() {
         return veterinarioRepository.findAll().stream()
-                .map(v -> new VeterinarioDTO(v.getId(), v.getNombre(), v.getEspecialidad()))
+                .map(v -> new VeterinarioDTO(v.getId(), v.getNombre(), v.getApellido(), v.getEspecialidad(), v.getTelefono()))
                 .collect(Collectors.toList());
     }
 }

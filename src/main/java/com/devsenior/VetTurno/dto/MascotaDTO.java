@@ -5,6 +5,7 @@ public record MascotaDTO(
     String nombre,
     String especie,
     String raza,
+    Integer edad,
     Long propietarioId,
     String propietarioNombre
 ) {}

@@ -21,17 +21,18 @@ public class PropietarioService {
     public PropietarioDTO createPropietario(PropietarioRequest request) {
         Propietario propietario = new Propietario();
         propietario.setNombre(request.nombre());
+        propietario.setApellido(request.apellido());
         propietario.setTelefono(request.telefono());
         propietario.setEmail(request.email());
         
         Propietario saved = propietarioRepository.save(propietario);
         
-        return new PropietarioDTO(saved.getId(), saved.getNombre(), saved.getTelefono(), saved.getEmail());
+        return new PropietarioDTO(saved.getId(), saved.getNombre(), saved.getApellido(), saved.getTelefono(), saved.getEmail());
     }
 
     public List<PropietarioDTO> getAllPropietarios() {
         return propietarioRepository.findAll().stream()
-                .map(p -> new PropietarioDTO(p.getId(), p.getNombre(), p.getTelefono(), p.getEmail()))
+                .map(p -> new PropietarioDTO(p.getId(), p.getNombre(), p.getApellido(), p.getTelefono(), p.getEmail()))
                 .collect(Collectors.toList());
     }
 }

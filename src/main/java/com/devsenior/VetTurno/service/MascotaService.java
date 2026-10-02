@@ -30,6 +30,7 @@ public class MascotaService {
         mascota.setNombre(request.nombre());
         mascota.setEspecie(request.especie());
         mascota.setRaza(request.raza());
+        mascota.setEdad(request.edad());
         mascota.setPropietario(propietario);
         
         Mascota saved = mascotaRepository.save(mascota);
@@ -39,6 +40,7 @@ public class MascotaService {
                 saved.getNombre(), 
                 saved.getEspecie(), 
                 saved.getRaza(), 
+                saved.getEdad(), 
                 saved.getPropietario().getId(), 
                 saved.getPropietario().getNombre()
         );
@@ -51,6 +53,7 @@ public class MascotaService {
                         m.getNombre(), 
                         m.getEspecie(), 
                         m.getRaza(), 
+                        m.getEdad(), 
                         m.getPropietario().getId(), 
                         m.getPropietario().getNombre()
                 ))
