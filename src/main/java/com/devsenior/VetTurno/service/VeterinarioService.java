@@ -20,10 +20,10 @@ public class VeterinarioService {
 
     public VeterinarioDTO createVeterinario(VeterinarioRequest request) {
         Veterinario veterinario = new Veterinario();
-        veterinario.setNombre(request.nombre());
-        veterinario.setApellido(request.apellido());
-        veterinario.setEspecialidad(request.especialidad());
-        veterinario.setTelefono(request.telefono());
+        veterinario.setNombre(request.getNombre());
+        veterinario.setApellido(request.getApellido());
+        veterinario.setEspecialidad(request.getEspecialidad());
+        veterinario.setTelefono(request.getTelefono());
         
         Veterinario saved = veterinarioRepository.save(veterinario);
         

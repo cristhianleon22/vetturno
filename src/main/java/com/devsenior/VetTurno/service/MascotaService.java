@@ -23,14 +23,14 @@ public class MascotaService {
     }
 
     public MascotaDTO createMascota(MascotaRequest request) {
-        Propietario propietario = propietarioRepository.findById(request.propietarioId())
-                .orElseThrow(() -> new RuntimeException("Propietario no encontrado con id " + request.propietarioId()));
+        Propietario propietario = propietarioRepository.findById(request.getPropietarioId())
+                .orElseThrow(() -> new RuntimeException("Propietario no encontrado con id " + request.getPropietarioId()));
                 
         Mascota mascota = new Mascota();
-        mascota.setNombre(request.nombre());
-        mascota.setEspecie(request.especie());
-        mascota.setRaza(request.raza());
-        mascota.setEdad(request.edad());
+        mascota.setNombre(request.getNombre());
+        mascota.setEspecie(request.getEspecie());
+        mascota.setRaza(request.getRaza());
+        mascota.setEdad(request.getEdad());
         mascota.setPropietario(propietario);
         
         Mascota saved = mascotaRepository.save(mascota);
