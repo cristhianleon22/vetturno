@@ -25,6 +25,12 @@ public class MascotaController {
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<MascotaDTO> getMascotaById(@PathVariable Long id) {
+        MascotaDTO mascota = mascotaService.getMascotaById(id);
+        return ResponseEntity.ok(mascota);
+    }
+
     @GetMapping
     public ResponseEntity<List<MascotaDTO>> getAllMascotas() {
         List<MascotaDTO> mascotas = mascotaService.getAllMascotas();

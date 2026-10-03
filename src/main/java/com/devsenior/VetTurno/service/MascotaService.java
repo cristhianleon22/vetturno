@@ -46,6 +46,21 @@ public class MascotaService {
         );
     }
 
+    public MascotaDTO getMascotaById(Long id) {
+        Mascota mascota = mascotaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Mascota no encontrada con id " + id));
+
+        return new MascotaDTO(
+                mascota.getId(),
+                mascota.getNombre(),
+                mascota.getEspecie(),
+                mascota.getRaza(),
+                mascota.getEdad(),
+                mascota.getPropietario().getId(),
+                mascota.getPropietario().getNombre()
+        );
+    }
+
     public List<MascotaDTO> getAllMascotas() {
         return mascotaRepository.findAll().stream()
                 .map(m -> new MascotaDTO(
