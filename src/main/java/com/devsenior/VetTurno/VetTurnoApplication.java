@@ -10,4 +10,5 @@ public class VetTurnoApplication {
 		SpringApplication.run(VetTurnoApplication.class, args);
 	}
 
+	
 }

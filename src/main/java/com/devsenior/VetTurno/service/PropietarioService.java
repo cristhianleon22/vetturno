@@ -20,10 +20,10 @@ public class PropietarioService {
 
     public PropietarioDTO createPropietario(PropietarioRequest request) {
         Propietario propietario = new Propietario();
-        propietario.setNombre(request.nombre());
-        propietario.setApellido(request.apellido());
-        propietario.setTelefono(request.telefono());
-        propietario.setEmail(request.email());
+        propietario.setNombre(request.getNombre());
+        propietario.setApellido(request.getApellido());
+        propietario.setTelefono(request.getTelefono());
+        propietario.setEmail(request.getEmail());
         
         Propietario saved = propietarioRepository.save(propietario);
         
