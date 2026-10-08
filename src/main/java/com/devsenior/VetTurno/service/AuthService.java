@@ -3,6 +3,7 @@ package com.devsenior.VetTurno.service;
 import com.devsenior.VetTurno.dto.AuthResponse;
 import com.devsenior.VetTurno.dto.LoginRequest;
 import com.devsenior.VetTurno.dto.RegistroRequest;
+import com.devsenior.VetTurno.exception.ReglaNegocioException;
 import com.devsenior.VetTurno.model.Rol;
 import com.devsenior.VetTurno.model.Usuario;
 import com.devsenior.VetTurno.repository.UsuarioRepository;
@@ -35,7 +36,7 @@ public class AuthService {
 
     public AuthResponse registrar(RegistroRequest request) {
         if (usuarioRepository.existsByEmail(request.getEmail())) {
-            throw new IllegalArgumentException("El email ya está registrado");
+            throw new ReglaNegocioException("El email ya está registrado");
         }
 
         Usuario usuario = new Usuario();

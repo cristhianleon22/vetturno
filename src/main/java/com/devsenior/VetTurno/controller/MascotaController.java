@@ -3,6 +3,7 @@ package com.devsenior.VetTurno.controller;
 import com.devsenior.VetTurno.dto.MascotaDTO;
 import com.devsenior.VetTurno.dto.MascotaRequest;
 import com.devsenior.VetTurno.service.MascotaService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class MascotaController {
     }
 
     @PostMapping
-    public ResponseEntity<MascotaDTO> createMascota(@RequestBody MascotaRequest request) {
+    public ResponseEntity<MascotaDTO> createMascota(@Valid @RequestBody MascotaRequest request) {
         MascotaDTO created = mascotaService.createMascota(request);
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }

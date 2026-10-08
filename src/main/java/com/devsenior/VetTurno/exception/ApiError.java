@@ -5,27 +5,28 @@ import java.util.Map;
 
 public class ApiError {
 
-    private int estado;
+    private int status;
     private String mensaje;
     private Map<String, String> errores;
     private LocalDateTime timestamp;
 
     public ApiError() {
+        this.timestamp = LocalDateTime.now();
     }
 
-    public ApiError(int estado, String mensaje, Map<String, String> errores) {
-        this.estado = estado;
+    public ApiError(int status, String mensaje, Map<String, String> errores) {
+        this.status = status;
         this.mensaje = mensaje;
         this.errores = errores;
         this.timestamp = LocalDateTime.now();
     }
 
-    public int getEstado() {
-        return estado;
+    public int getStatus() {
+        return status;
     }
 
-    public void setEstado(int estado) {
-        this.estado = estado;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getMensaje() {

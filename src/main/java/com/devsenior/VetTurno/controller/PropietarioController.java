@@ -3,6 +3,7 @@ package com.devsenior.VetTurno.controller;
 import com.devsenior.VetTurno.dto.PropietarioDTO;
 import com.devsenior.VetTurno.dto.PropietarioRequest;
 import com.devsenior.VetTurno.service.PropietarioService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class PropietarioController {
     }
 
     @PostMapping
-    public ResponseEntity<PropietarioDTO> createPropietario(@RequestBody PropietarioRequest request) {
+    public ResponseEntity<PropietarioDTO> createPropietario(@Valid @RequestBody PropietarioRequest request) {
         PropietarioDTO created = propietarioService.createPropietario(request);
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }

@@ -2,6 +2,7 @@ package com.devsenior.VetTurno.service;
 
 import com.devsenior.VetTurno.dto.MascotaDTO;
 import com.devsenior.VetTurno.dto.MascotaRequest;
+import com.devsenior.VetTurno.exception.ReglaNegocioException;
 import com.devsenior.VetTurno.model.Mascota;
 import com.devsenior.VetTurno.model.Propietario;
 import com.devsenior.VetTurno.repository.MascotaRepository;
@@ -24,7 +25,7 @@ public class MascotaService {
 
     public MascotaDTO createMascota(MascotaRequest request) {
         Propietario propietario = propietarioRepository.findById(request.getPropietarioId())
-                .orElseThrow(() -> new RuntimeException("Propietario no encontrado con id " + request.getPropietarioId()));
+                .orElseThrow(() -> new ReglaNegocioException("Propietario no encontrado con id " + request.getPropietarioId()));
                 
         Mascota mascota = new Mascota();
         mascota.setNombre(request.getNombre());
@@ -48,7 +49,7 @@ public class MascotaService {
 
     public MascotaDTO getMascotaById(Long id) {
         Mascota mascota = mascotaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Mascota no encontrada con id " + id));
+                .orElseThrow(() -> new ReglaNegocioException("Mascota no encontrada con id " + id));
 
         return new MascotaDTO(
                 mascota.getId(),
