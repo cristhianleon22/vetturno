@@ -42,14 +42,17 @@ public class AuthService {
         Usuario usuario = new Usuario();
         usuario.setEmail(request.getEmail());
         usuario.setPassword(passwordEncoder.encode(request.getPassword()));
-        usuario.setRol(Rol.USER); // Siempre USER al registrar
+        usuario.setRol(Rol.USER); 
 
         usuarioRepository.save(usuario);
 
-        UserDetails userDetails = userDetailsService.loadUserByUsername(usuario.getEmail());
-        String token = jwtService.generateToken(userDetails);
-
-        return new AuthResponse(token);
+        try {
+            UserDetails userDetails = userDetailsService.loadUserByUsername(usuario.getEmail());
+            String token = jwtService.generateToken(userDetails);
+            return new AuthResponse(token);
+        } catch (Exception e) {
+            throw new ReglaNegocioException("Error al completar el registro: " + e.getMessage());
+        }
     }
 
     public AuthResponse login(LoginRequest request) {
